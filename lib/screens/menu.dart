@@ -1,10 +1,5 @@
-import 'package:agro_app/model/tempo.dart';
-import 'package:agro_app/screens/indices.dart';
 import 'package:agro_app/screens/listagemPrecos.dart';
-import 'package:agro_app/screens/tempo.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -14,15 +9,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  void navigateTempo() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const PrevisaoTempo(),
-      ),
-    );
-  }
-
+  
   void navigatelistagem() {
     Navigator.push(
       context,
@@ -32,14 +19,6 @@ class _MenuState extends State<Menu> {
     );
   }
 
-  void navigateIndices() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const Indices(),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +55,6 @@ class _MenuState extends State<Menu> {
           Card(
             child: InkWell(
               onTap: () {
-                navigateTempo();
               },
               splashColor: Colors.green.withAlpha(30),
               child: Center(
@@ -97,7 +75,6 @@ class _MenuState extends State<Menu> {
           Card(
             child: InkWell(
               onTap: () {
-                navigateIndices();
               },
               splashColor: Colors.green.withAlpha(30),
               child: Center(

@@ -29,14 +29,7 @@ class _ListagePrecosState extends State<ListagePrecos> {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          title: Text(produtos[index].descricao),
-                          trailing: Text('R\$ ${produtos[index].valor.toString()}'),
-                        ),
-                      ),
-                      const Divider()
+                      Text(produtos[index].descricao),
                     ],
                   );
                 },
