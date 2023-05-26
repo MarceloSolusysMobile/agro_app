@@ -1,4 +1,4 @@
-import 'package:agro_app/model/Produto.dart';
+import 'package:agro_app/model/produto.dart';
 import 'package:flutter/material.dart';
 
 class ListagePrecos extends StatefulWidget {
@@ -9,11 +9,14 @@ class ListagePrecos extends StatefulWidget {
 }
 
 class _ListagePrecosState extends State<ListagePrecos> {
+  
   List<Produto> produtos = [
-    Produto(descricao: 'Soja', valor: 12.00),
-    Produto(descricao: 'Milho', valor: 12.00),
-    Produto(descricao: 'Feijão', valor: 12.00),
+    Produto(descricao: 'Estado SP', nome: 'Soja', valor: 12.50),
+    Produto(descricao: 'Estado SP', nome: 'Milho', valor: 11.60),
+    Produto(descricao: 'Estado SP', nome: 'Feijão', valor: 23.60),
+    Produto(descricao: 'Estado SP', nome: 'Arroz', valor: 15.00),
   ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +32,11 @@ class _ListagePrecosState extends State<ListagePrecos> {
                 itemBuilder: (context, index) {
                   return Column(
                     children: [
-                      Text(produtos[index].descricao),
+                      ListTile(
+                        title:Text(produtos[index].nome) ,
+                        subtitle: Text(produtos[index].descricao),
+                        trailing:Text('R\$${produtos[index].valor}'),
+                      )
                     ],
                   );
                 },
