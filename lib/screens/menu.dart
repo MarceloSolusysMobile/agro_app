@@ -1,6 +1,7 @@
 import 'package:agro_app/screens/listagemPrecos.dart';
 import 'package:agro_app/screens/tempo.dart';
 import 'package:flutter/material.dart';
+import 'indices.dart';
 
 class Menu extends StatefulWidget {
   const Menu({super.key});
@@ -10,7 +11,6 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  
   void navigatelistagem() {
     Navigator.push(
       context,
@@ -20,7 +20,7 @@ class _MenuState extends State<Menu> {
     );
   }
 
-   void navigateTempo() {
+  void navigateTempo() {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -29,7 +29,14 @@ class _MenuState extends State<Menu> {
     );
   }
 
-
+  void navigateIndices() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Indices(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +55,10 @@ class _MenuState extends State<Menu> {
                 navigatelistagem();
               },
               splashColor: Colors.green.withAlpha(30),
-              child: Center(
+              child: const Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.monetization_on,
                       size: 70,
@@ -66,7 +73,7 @@ class _MenuState extends State<Menu> {
           Card(
             child: InkWell(
               onTap: () {
-                navigateTempo();              
+                navigateTempo();
               },
               splashColor: Colors.green.withAlpha(30),
               child: Center(
@@ -87,12 +94,13 @@ class _MenuState extends State<Menu> {
           Card(
             child: InkWell(
               onTap: () {
+                navigateIndices();
               },
               splashColor: Colors.green.withAlpha(30),
-              child: Center(
+              child: const Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: const [
+                  children: [
                     Icon(
                       Icons.graphic_eq_outlined,
                       size: 70,
