@@ -25,26 +25,65 @@ class _IndicesState extends State<Indices> {
         centerTitle: true,
         title: const Text('Indices'),
       ),
-      body: Column(
-        children: [
-          SfCartesianChart(
-            primaryXAxis: CategoryAxis(),
-            primaryYAxis: NumericAxis(
-              minimum: 5000,
-              maximum: 15000,
-              interval: 1000,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            //import 'package:syncfusion_flutter_charts/charts.dart';
+            SfCartesianChart(
+              primaryXAxis: CategoryAxis(),
+              primaryYAxis: NumericAxis(
+                minimum: 5000,
+                maximum: 15000,
+                interval: 1000,
+              ),
+              series: <ChartSeries>[
+                ColumnSeries<Financa, String>(
+                  dataSource: financas_list,
+                  pointColorMapper: (Financa financa, _) => financa.color,
+                  xValueMapper: (Financa financa, _) => financa.categoria,
+                  yValueMapper: (Financa financa, _) => financa.valor,
+                )
+              ],
             ),
-            series: <ChartSeries>[
-              ColumnSeries<Financa, String>(
-                dataSource: financas_list,
-                pointColorMapper: (Financa financa, _) => financa.color,
-                xValueMapper: (Financa financa, _) => financa.categoria,
-                yValueMapper: (Financa financa, _) => financa.valor,
-              )
-            ],
-          ),
-          
-        ],
+            SfCartesianChart(
+              primaryXAxis: CategoryAxis(),
+              primaryYAxis: NumericAxis(
+                minimum: 5000,
+                maximum: 15000,
+                interval: 1000,
+              ),
+              series: <ChartSeries>[
+                LineSeries<Financa, String>(
+                  dataSource: financas_list,
+                  pointColorMapper: (Financa financa, _) => financa.color,
+                  xValueMapper: (Financa financa, _) => financa.categoria,
+                  yValueMapper: (Financa financa, _) => financa.valor,
+                )
+              ],
+            ),
+      
+      
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: financas_list.length,
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: Icon(
+                          Icons.circle,
+                          color: financas_list[index].color,
+                        ),
+                        title: Text(financas_list[index].categoria),
+                        trailing: Text('R\$${financas_list[index].valor}'),
+                      )
+                    ],
+                  );
+                },
+              ),
+            
+          ],
+        ),
       ),
     );
   }
