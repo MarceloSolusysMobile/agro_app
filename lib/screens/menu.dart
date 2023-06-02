@@ -1,4 +1,5 @@
 import 'package:agro_app/screens/listagemPrecos.dart';
+import 'package:agro_app/screens/medidores.dart';
 import 'package:agro_app/screens/tempo.dart';
 import 'package:flutter/material.dart';
 import 'indices.dart';
@@ -34,6 +35,15 @@ class _MenuState extends State<Menu> {
       context,
       MaterialPageRoute(
         builder: (context) => const Indices(),
+      ),
+    );
+  }
+
+  void navigateMedidores() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const Medidor(),
       ),
     );
   }
@@ -107,6 +117,27 @@ class _MenuState extends State<Menu> {
                       color: Colors.green,
                     ),
                     Text("Índices", style: TextStyle(fontSize: 20)),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Card(
+            child: InkWell(
+              onTap: () {
+                navigateMedidores();
+              },
+              splashColor: Colors.green.withAlpha(30),
+              child: const Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.device_thermostat_outlined,
+                      size: 70,
+                      color: Colors.green,
+                    ),
+                    Text("Medidores", style: TextStyle(fontSize: 20)),
                   ],
                 ),
               ),
